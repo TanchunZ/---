@@ -16,7 +16,7 @@ public class Code06 {
         if(arr[arr.length - 1] < arr[arr.length - 2]) {
             return arr.length - 1;
         }
-            int l = 0;
+            int l = 1;
             int r = arr.length - 2;
             int m = 0;
             while (l < r) {
@@ -30,6 +30,32 @@ public class Code06 {
                 }
             }
             return l;
+
+//        // 课上的代码
+//        public static int getLessIndex(int[] arr) {
+//            if (arr == null || arr.length == 0) {
+//                return -1;
+//            }
+//            if (arr.length == 1 || arr[0] < arr[1]) {
+//                return 0;
+//            }
+//            if (arr[arr.length - 1] < arr[arr.length - 2]) {
+//                return arr.length - 1;
+//            }
+//            int left = 1;
+//            int right = arr.length - 2;
+//            int mid = 0;
+//            while (left < right) {
+//                mid = (left + right) / 2;
+//                if (arr[mid] > arr[mid - 1]) {
+//                    right = mid - 1;
+//                } else if (arr[mid] > arr[mid + 1]) {
+//                    left = mid + 1;
+//                } else {
+//                    return mid;
+//                }
+//            }
+//            return left;
 
     }
 
@@ -66,10 +92,12 @@ public class Code06 {
     public static void main(String[] args) {
         int maxSize = 10;
         int maxValue = 10;
-        int times = 100;
+        int times = 1000;
         for (int i = 0; i < times; i++) {
             int[] arr = getRandomArray(maxSize,maxValue);
+            printArray(arr);
             int r = code6(arr);
+//            int r = getLessIndex(arr);
             if(!isRight(arr,r)){
                 printArray(arr);
                 System.out.println(r);
@@ -79,6 +107,7 @@ public class Code06 {
         }
         int[] arr2 = getRandomArray(maxSize,maxValue);
         int r2 = code6(arr2);
+//        int r2 = getLessIndex(arr2);
         printArray(arr2);
         System.out.println(r2);
         System.out.println("结束");
