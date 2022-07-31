@@ -9,13 +9,15 @@ public class Code06 {
     public static int code6(int[] arr ) {
         if (arr.length == 0 || arr == null) {
             return -1;
-        } else if (arr.length == 1 || arr[0] < arr[1]) {
+        }
+        if (arr.length == 1 || arr[0] < arr[1]) {
             return 0;
-        } else  if(arr[arr.length - 1] < arr[arr.length - 2]) {
+        }
+        if(arr[arr.length - 1] < arr[arr.length - 2]) {
             return arr.length - 1;
         }
             int l = 0;
-            int r = arr.length - 1;
+            int r = arr.length - 2;
             int m = 0;
             while (l < r) {
                 m = (l + r) / 2;
@@ -33,10 +35,10 @@ public class Code06 {
 
     public static int[] getRandomArray(int maxSize,int maxValue){
         int[] arr = new int[(int)((maxSize*Math.random())+1)];
-        arr[0] = (int)((maxValue+1)*Math.random())-(int)((maxValue+1)*Math.random());
-        for (int i = 1; i < arr.length-1; i++) {
+        arr[0] = (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
+        for (int i = 1; i < arr.length; i++) {
             do {
-                arr[i] = (int)(((maxValue+1)*Math.random()))-(int)((maxValue+1)*Math.random());
+                arr[i] = (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
             } while (arr[i] == arr [i-1]);
         }
         return arr;
@@ -50,13 +52,13 @@ public class Code06 {
     }
 
     public static boolean isRight(int[] arr,int num){
-        if(arr.length == 1){
-            return num == 0;
+        if(arr.length <= 1){
+            return true;
         }
-        else if(arr.length!=1&&num == 0){
-            return arr[0]<arr[1];
+         if(num == 0){
+            return arr[num]<arr[num+1];
         }
-        else if(num == arr.length-1){
+         if(num == arr.length-1){
             return arr[num] < arr[num-1];
         }else return arr[num]<arr[num-1]&&arr[num]<arr[num+1];
     }
@@ -68,12 +70,12 @@ public class Code06 {
         for (int i = 0; i < times; i++) {
             int[] arr = getRandomArray(maxSize,maxValue);
             int r = code6(arr);
-//            if(!isRight(arr,r)){
+            if(!isRight(arr,r)){
                 printArray(arr);
                 System.out.println(r);
                 System.out.println("fuck");
                 break;
-//            }
+            }
         }
         int[] arr2 = getRandomArray(maxSize,maxValue);
         int r2 = code6(arr2);
