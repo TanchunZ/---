@@ -1,5 +1,8 @@
 package class03;
 
+/**
+ * 归并，找出数组中的最大值
+ */
 public class Code08_GetMax {
 
 	// 求arr中的最大值

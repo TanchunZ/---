@@ -2,6 +2,9 @@ package class03;
 
 import java.util.Stack;
 
+/**
+ * 一个栈在满足正常出栈入栈的功能外，实现输出最小值 ，且时间复杂度为O(1)
+ */
 public class Code05_GetMinStack {
 
 	public static class MyStack1 {

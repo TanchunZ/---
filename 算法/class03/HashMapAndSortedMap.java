@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeMap;
 
+/**
+ * 哈希
+ */
 public class HashMapAndSortedMap {
 
 	public static class Node {

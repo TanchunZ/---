@@ -1,5 +1,8 @@
 package class03;
 
+/**
+ * 删除一个链表中的某个数字
+ */
 public class Code02_DeleteGivenValue {
 
 	public static class Node {
