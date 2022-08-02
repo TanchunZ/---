@@ -3,7 +3,7 @@ public class Code01_DeleteGivenValue {
         public int value;
         public Node next;
         public Node(int value) {
-            value = this.value;
+            this.value = value;
         }
     }
 
@@ -14,8 +14,8 @@ public class Code01_DeleteGivenValue {
      * @return
      */
     public static Node DeleteGivenValue(Node head, int num) {
-        while (head.value != num) {
-            if (head.value == num) {
+        while (head != null) {
+            if (head.value != num) {
                 break;
             }
             head = head.next;
@@ -40,15 +40,15 @@ public class Code01_DeleteGivenValue {
      * @return
      */
     public static Node getRandomLinkedList(int maxSize,int maxValue){
-        int size = (int)((maxSize+1)*Math.random());
+        int size = (int)((maxSize+1)*Math.random()+1);
         if(size ==0){
             return null;
         }
-        Node head = new Node((int)((maxSize+1)*Math.random()));
+        Node head = new Node((int)((maxValue+1)*Math.random())-(int)((maxValue+1)*Math.random()));
         Node pre = head;
         size--;
         while (size!=0){
-            Node cur = new Node((int)((maxSize+1)*Math.random()));
+            Node cur = new Node((int)((maxValue+1)*Math.random())-(int)((maxValue+1)*Math.random()));
             pre.next = cur;
             pre = cur;
             size--;
@@ -57,15 +57,31 @@ public class Code01_DeleteGivenValue {
     }
 
     public static void printLinkedList(Node head){
-        while (head.next!=null){
-            System.out.print(head.value);
-            head = head.next;
+        if(head==null){
+            System.out.println("null");
+        }else {
+            while (head.next != null) {
+                System.out.print(head.value + " ");
+                head = head.next;
+            }
         }
+        System.out.println();
     }
 
 
     public static void main(String[] args) {
-
+        int maxSize = 10;
+        int maxValue = 10;
+        int times = 100;
+        for (int i = 0; i < times; i++) {
+            Node head = getRandomLinkedList(maxSize,maxValue);
+            printLinkedList(head);
+            int num = (int)((maxValue+1)*Math.random())-(int)((maxValue+1)*Math.random());
+            System.out.println("要删除的数: "+5);
+            Node newHead = DeleteGivenValue(head,5);
+            printLinkedList(newHead);
+            System.out.println("------------------------");
+        }
 
 
     }
