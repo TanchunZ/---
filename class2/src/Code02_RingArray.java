@@ -19,7 +19,7 @@ public class Code02_RingArray {
 
         public void push(int num) {
             if (size == limit) {
-                System.out.println("队列已满。");
+                throw new RuntimeException("队列已满！");
             } else {
                 size++;
                 arr[pushI] = num;
@@ -29,8 +29,7 @@ public class Code02_RingArray {
 
         public int pull() {
             if (size == 0) {
-                System.out.println("队列已空");
-                return 0;
+                throw new RuntimeException("队列已空！");
             } else {
                 size--;
                 int tmp = arr[pullI];
@@ -39,8 +38,36 @@ public class Code02_RingArray {
             }
 
         }
-        public  int indexI(int i){
-            return i == limit-1 ? 0 : i++;
+        public int indexI(int limit){
+            return limit < limit-1 ? limit+1 : 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        MyQueue mq = new MyQueue(5);
+        mq.push(1);
+        mq.push(2);
+        mq.push(3);
+        mq.push(4);
+        for (int i = 0; i <= mq.size; i++) {
+            System.out.print(mq.arr[i]+" ");
+        }
+        System.out.println("--------");
+        mq.pull();
+        for (int i = 0; i <= mq.size; i++) {
+            System.out.print(mq.arr[i]+" ");
+        }
+        System.out.println("--------");
+        mq.pull();
+        for (int i = 0; i <= mq.size; i++) {
+            System.out.print(mq.arr[i]+" ");
+        }
+        System.out.println("--------");
+        mq.push(5);
+        mq.push(6);
+        mq.push(7);
+        for (int i = 0; i <= mq.size; i++) {
+            System.out.print(mq.arr[i]+" ");
         }
     }
 }
